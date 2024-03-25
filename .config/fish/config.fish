@@ -4,7 +4,8 @@
 # version 0.2.0
 #
 # Changelog :
-# Better support for Debian based Distro.
+# Better support for Debian based Distro with distro detection logic.
+# Added a function to download and install all requirements for this fish configuration.
 #
 
 # TODO: Fish functions
