@@ -1,11 +1,10 @@
 #
 # very simple
 # config.fish by erine@archangels
-# version 0.2.0
+# version 0.2.1
 #
 # Changelog :
-# Better support for Debian based Distro with distro detection logic.
-# Added a function to download and install all requirements for this fish configuration.
+# More distro support by using logic to find which package manager is being used rather than the distro name.
 #
 
 # TODO: Fish functions
@@ -32,22 +31,26 @@ end
 
 # System update function
 function updt
-    if cat /etc/os-release | grep ID="arch" -q
-        sudo pacman -Syu
-    else if cat /etc/os-release | grep ID="ubuntu" -q
+    if test -e /usr/bin/pacman
+        if test -e /usr/bin/yay
+            yay -Syu
+        else
+            sudo pacman -Syu
+        end
+    else if test -e /usr/bin/apt
         sudo apt update && sudo apt upgrade
     else
-        echo "Current OS/Linux Distro is not yet supported for this command."
+        echo "Current package manager is either not found or not yet supported for this command."
         echo "Add your own command into the fish configuration or just talk to Erine."
     end
 end
 
 # Function for downloading all requirements for this fish configuration
 function fishing
-    if cat /etc/os-release | grep ID="arch" -q
+    if test -e /usr/bin/pacman
         sudo pacman -S --needed zoxide fd fzf tmux starship
     else
-        echo "Current OS/Linux Distro is not yet supported for this command."
+        echo "Current package manager is either not found or not yet supported for this command."
         echo "Add your own command into the fish configuration or just talk to Erine."
     end
 end
@@ -55,6 +58,7 @@ end
 # Configure fish function
 function fishc
     # Comment/Uncomment, OR, just edit the path based on your fish configuration path
+    #
     # v ~/.config/fish/
     v ~/dotfiles/.config/fish/
 end
@@ -62,7 +66,6 @@ end
 # TODO: Aliases
 #
 # Shell aliases for fish
-alias d="dolphin"
 alias v="nvim"
 alias vh="nvim ."
 alias c="code"
@@ -71,8 +74,6 @@ alias gpu="nvidia-smi"
 alias kitth="kitten theme"
 
 # alias pokemon="pokemon-colorscripts -r"
-# alias neofetch="neofetch --ascii --source ~/.config/neofetch/rose.txt"
-# alias fetch="neofetch --chafa --size 285px --source ~/Pictures/4Chan/Evangelion/lonelyBig.jpg"
 
 alias sl="fd --hidden | fzf-tmux -p | xargs nvim"
 alias sf="fd --hidden --type f | fzf-tmux -p | xargs nvim"
@@ -84,13 +85,9 @@ alias uwu="sudo"
 
 # alias minecraft="prime-run java -jar ~/lLauncher/LegacyLauncher_legacy.jar"
 
-# Arch Based aliases
-alias pacclr="sudo pacman -Sc"
-alias pacclr-full="sudo pacman -Scc"
-
-alias yayclr="yay -Sc"
-alias yayclr-full="yay -Scc"
-
+# TODO: Distro/OS specific aliases
+#
+# Arch Linux
 alias fuck="sudo pacman -S --needed"
 
 # TODO: Documentations
@@ -100,9 +97,8 @@ function fishh
     echo '''
 fishh               --Show all Fish commands from config.fish
 fishc               --Configure Fish
-fishing             --Install everything that is needed for this fish config
+fishing             --Install everything needed for this fish config
 
-d                   --Dolphin
 v                   --NeoVim
 vh                  --NeoVim in current directory
 c                   --Code OSS
