@@ -1,10 +1,12 @@
 #
 # very simple
 # config.fish by erine@archangels
-# version 0.2.1
+# version 0.2.2
 #
 # Changelog :
-# More distro support by using logic to find which package manager is being used rather than the distro name.
+# Add support for Apt package manager when using the <fishing> command.
+# Add more aliases.
+# Modified <fishh> output.
 #
 
 # TODO: Fish functions
@@ -24,7 +26,7 @@ function s
         echo 'Change the <spotify-ui> to any desired Spotify interface like spotify-launcher, spt(spotify-tui), ncspot, etc.'
     else
         echo "Using $spotify"
-        sleep 1
+        sleep 1 # Time delay before executing
         $spotify
     end
 end
@@ -48,7 +50,9 @@ end
 # Function for downloading all requirements for this fish configuration
 function fishing
     if test -e /usr/bin/pacman
-        sudo pacman -S --needed zoxide fd fzf tmux starship
+        sudo pacman -S --needed neovim zoxide fd fzf tmux starship
+    else if test -e /usr/bin/apt
+        sudo apt install --no-install-recommends neovim zoxide fd fzf tmux starship
     else
         echo "Current package manager is either not found or not yet supported for this command."
         echo "Add your own command into the fish configuration or just talk to Erine."
@@ -57,10 +61,11 @@ end
 
 # Configure fish function
 function fishc
-    # Comment/Uncomment, OR, just edit the path based on your fish configuration path
-    #
-    # v ~/.config/fish/
-    v ~/dotfiles/.config/fish/
+    if test -e ~/dotfiles/.config/fish/
+        v ~/dotfiles/.config/fish/
+    else
+        v ~/.config/fish/
+    end
 end
 
 # TODO: Aliases
@@ -87,8 +92,11 @@ alias uwu="sudo"
 
 # TODO: Distro/OS specific aliases
 #
-# Arch Linux
+# Arch
 alias fuck="sudo pacman -S --needed"
+alias fucking="yay -S"
+# Debian
+alias shit="sudo apt install --no-install-recommends"
 
 # TODO: Documentations
 #
@@ -118,13 +126,10 @@ q                   --Exit terminal
 
 uwu                 --Alias for sudo
 
-pacclr              --Pacman packages and caches cleanup
-pacclr-full         --Aggresive Pacman packages and caches cleanup
+fuck <package>      --Pacman package install
+fucking <package>   --Yay package install
 
-yayclr              --Yay packages and caches cleanup
-yayclr-full         --Aggresive Yay packages and caches cleanup
-
-fuck <package_name> --Pacman package install
+shit <package>      --Apt package install
 '''
 end
 
