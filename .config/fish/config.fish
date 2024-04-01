@@ -61,11 +61,8 @@ end
 
 # Configure fish function
 function fishc
-    if test -e ~/dotfiles/.config/fish/
-        v ~/dotfiles/.config/fish/
-    else
-        v ~/.config/fish/
-    end
+    # v ~/.config/fish/
+    v ~/dotfiles/..config/fish
 end
 
 # TODO: Aliases
