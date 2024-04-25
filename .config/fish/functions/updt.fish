@@ -1,7 +1,9 @@
 # System update function
 function updt
     if test -e /usr/bin/pacman
-        if test -e /usr/bin/yay
+        if test -e /usr/bin/eos-update
+            eos-update --aur
+        else if test -e /usr/bin/yay
             yay -Syu
         else
             sudo pacman -Syu
