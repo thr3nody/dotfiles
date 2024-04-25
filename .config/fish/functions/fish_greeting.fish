@@ -1,4 +1,4 @@
 # Greeting function
 function fish_greeting
-    pokemon-colorscripts -r
+    # pokemon-colorscripts -r
 end
