@@ -14,6 +14,7 @@ nc                  --Ncspot
 gpu                 --nvidia-smi
 kitth               --Kitten themes
 
+fuck <package>      --Package install
 updt                --Full system update
 
 sl                  --Advanced search system for both files and directories.
@@ -24,9 +25,6 @@ q                   --Exit terminal
 
 uwu                 --Alias for sudo
 
-fuck <package>      --Pacman package install
 fucking <package>   --Yay package install
-
-shit <package>      --Apt package install
 '''
 end
