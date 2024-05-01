@@ -5,18 +5,17 @@ echo "Starting a full system update."
         if test -e /usr/bin/eos-update
             echo "[eos-update] detected in the system."
             echo "Doing: eos-update --aur"
-            for i in (seq 1 3)
-                echo -n ". "
-                sleep 0.5
-            end
+            updt-sleep-func
             eos-update --aur
         else if test -e /usr/bin/yay
             echo "[yay] detected in the system."
             echo "Doing: yay"
+            updt-sleep-func
             yay
         else
             echo "[pacman] detected in the system."
-            echo "Doing: yay"
+            echo "Doing: pacman"
+            updt-sleep-func
             sudo pacman -Syu
         end
     else if test -e /usr/bin/apt
