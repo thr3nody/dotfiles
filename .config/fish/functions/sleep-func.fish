@@ -4,4 +4,5 @@ function sleep-func
         echo -n ". "
         sleep 0.5
     end
+    echo
 end
