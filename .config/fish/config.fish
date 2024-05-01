@@ -32,11 +32,7 @@ alias uwu="sudo"
 # TODO: Distro/OS specific aliases
 #
 # Arch
-alias fuck="sudo pacman -S --needed"
 alias fucking="yay -S"
-# Debian
-alias shit="sudo apt install --no-install-recommends"
-
 
 # TODO: Fish inits
 #
