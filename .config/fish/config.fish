@@ -19,6 +19,7 @@ alias kitth="kitten theme"
 
 # alias pokemon="pokemon-colorscripts -r"
 
+# TODO: Add support for more linux distribution.
 alias sl="fd --hidden | fzf-tmux -p | xargs nvim"
 alias sf="fd --hidden --type f | fzf-tmux -p | xargs nvim"
 alias sd="fd --hidden --type d | fzf-tmux -p | xargs nvim"

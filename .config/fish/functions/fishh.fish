@@ -17,6 +17,7 @@ kitth               --Kitten themes
 fuck <package>      --Package install
 updt                --Full system update
 
+[Currently as far as I tested it, the 3 command below only works on Arch-based distro.]
 sl                  --Advanced search system for both files and directories.
 sf                  --Advanced search system for files only.
 sd                  --advanced search system for directories only.
