@@ -1,10 +1,13 @@
 #
 # very simple
 # config.fish by erine@archangels
-# version 2.3
+# version 2.4
 #
 # Changelog :
-# Moved all of the fish functions to the fish/functions/ directory.
+# Less dry code with more function.
+# More support currently focused on Debian (apt) based distro.
+# Improved functions like fuck, fishing, and updt, with it's distro-detect automation.
+# Better in-terminal message transparency, especially when using distro-detect automation.
 #
 
 # TODO: Aliases
