@@ -1,26 +1,25 @@
 # System update function
 function updt
-    echo "Starting a full system update."
-    if test -e /usr/bin/pacman
+    blue-echo "Starting a full system update for: $package_manager\n"
+    switch $package_manager
+    case pacman
         if test -e /usr/bin/eos-update
-            echo "[eos-update] detected in the system."
-            echo "Doing: eos-update --aur"
+            blue-echo "[eos-update] detected in the system.\n"
+            yellow-echo "Doing: eos-update --aur\n"
             eos-update --aur
         else if test -e /usr/bin/yay
-            echo "[yay] detected in the system."
-            echo "Doing: yay"
+            blue-echo "[yay] detected in the system.\n"
+            yellow-echo "Doing: yay\n"
             yay
         else
-            echo "[pacman] detected in the system."
-            echo "Doing: pacman"
+            yellow-echo "Doing: sudo pacman -Syu\n"
             sudo pacman -Syu
         end
-    else if test -e /usr/bin/apt
-        echo "[apt] detected in the system."
-        echo "Doing: sudo apt update && sudo apt upgrade"
+    case apt
+        yellow-echo "Doing: sudo apt update && sudo apt upgrade\n"
         sudo apt update && sudo apt upgrade
-    else
-        echo "Current package manager is either not found or not yet supported for this command."
-        echo "Add your own command into the fish configuration or just talk to Erine."
+    case '*'
+        red-echo "Current package manager is either not found or not yet supported for this command.\n"
+        red-echo "Add your own command into the fish configuration or just talk to Erine.\n"
     end
 end

@@ -9,7 +9,7 @@ function fuck
         sudo pacman -S --needed $packages
     case apt
         set dotdebfile ./*.deb
-        if test "$dotdebsfiles" = "$packages"
+        if test "$dotdebfile" = "$packages"
             blue-echo "Installing a .deb file."
             yellow-echo "Doing: sudo chmod a+r $packages\n"
             sudo chmod a+r $packages
