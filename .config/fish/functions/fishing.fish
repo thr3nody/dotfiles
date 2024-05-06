@@ -1,6 +1,6 @@
 # Function for setting up package manager variable and downloading all requirements for this fish configuration.
 function fishing
-    set delete_first_time_message "sed -i '/<first-time-configuration>/d' ~/dotfiles/.config/fish/config.fish && sed -i '/<first-time-configuration>/d' ~/.config/fish/config.fish";
+    set delete_first_time_message "sed -i '/first-time-configuration/d' ~/dotfiles/.config/fish/config.fish && sed -i '/first-time-configuration/d' ~/.config/fish/config.fish";
 
     blue-echo "Looking for package manager.\n"
     if test -e /usr/bin/pacman

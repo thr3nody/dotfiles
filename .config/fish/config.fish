@@ -1,7 +1,7 @@
 #
 # very simple
 # config.fish by erine@archangels
-# version 2.5
+# version 2.5.1
 #
 # Changelog :
 # Refactor: Using switch-case to detect package manager.
@@ -9,6 +9,7 @@
 # Add: <fishing> will create universal varibale of $package_manager.
 # Add: Ability to automatically detect a .deb file, make readable with chmod, then proceed with apt install.
 # Add: Ability to detect eos-update for EndeavourOS users.
+# Fix: Unable to delete 'first time unconfigured usage message'.
 #
 
 # Fish greeting here.
