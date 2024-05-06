@@ -13,13 +13,13 @@ function fuck
             echo "[apt] detected in the system."
             echo "Installing a .deb file."
             echo "Doing: sudo chmod a+r $packages"
-            # sudo chmod a+r $packages
+            sudo chmod a+r $packages
             echo "Doing: sudo apt install $packages"
-            # sudo apt install $packages
+            sudo apt install $packages
         else
             echo "[apt] detected in the system."
             echo "Doing: sudo apt install $packages"
-            # sudo apt install $packages
+            sudo apt install $packages
         end
     else
         echo "Current package manager is either not found or not yet supported for this command."
