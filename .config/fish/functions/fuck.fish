@@ -1,28 +1,26 @@
 # Package install function.
 function fuck
     set packages $argv
-    echo "Starting package installation."
+    blue-echo "Starting package installation using: $package_manager\n"
 
-    if test -e /usr/bin/pacman
-        echo "[pacman] detected in the system."
-        echo "Doing: sudo pacman -S --needed $packages"
+    switch $package_manager
+    case pacman
+        yellow-echo "Doing: sudo pacman -S --needed $packages\n"
         sudo pacman -S --needed $packages
-    else if test -e /usr/bin/apt
+    case apt
         set dotdebfile ./*.deb
         if test "$dotdebsfiles" = "$packages"
-            echo "[apt] detected in the system."
-            echo "Installing a .deb file."
-            echo "Doing: sudo chmod a+r $packages"
+            blue-echo "Installing a .deb file."
+            yellow-echo "Doing: sudo chmod a+r $packages\n"
             sudo chmod a+r $packages
-            echo "Doing: sudo apt install $packages"
+            yellow-echo "Doing: sudo apt install $packages\n"
             sudo apt install $packages
         else
-            echo "[apt] detected in the system."
-            echo "Doing: sudo apt install $packages"
+            yellow-echo "Doing: sudo apt install $packages\n"
             sudo apt install $packages
         end
-    else
-        echo "Current package manager is either not found or not yet supported for this command."
-        echo "Add your own command into the fish configuration or just talk to Erine."
+    case '*'
+        red-echo "Current package manager is either not found or not yet supported for this command.\n"
+        red-echo "Add your own command into the fish configuration or just talk to Erine.\n"
     end
 end
