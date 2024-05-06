@@ -11,7 +11,7 @@
 # Add: Ability to detect eos-update for EndeavourOS users.
 #
 
-# Fish reeting here.
+# Fish greeting here.
 function fish_greeting
   # UwU
   blue-echo "You are using Erine's fish configuration. Please do the <fishing> command for first-time-configuration.\n"
