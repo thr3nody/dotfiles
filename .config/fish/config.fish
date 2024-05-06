@@ -10,6 +10,12 @@
 # Better in-terminal message transparency, especially when using distro-detect automation.
 #
 
+# Fish reeting here.
+function fish_greeting
+  # UwU
+  blue-echo "You are using Erine's fish configuration. Please do the <fishing> command for first-time-configuration.\n"
+end
+
 # TODO: Aliases
 #
 # Shell aliases for fish
