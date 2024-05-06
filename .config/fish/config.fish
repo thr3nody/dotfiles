@@ -1,13 +1,14 @@
 #
 # very simple
 # config.fish by erine@archangels
-# version 2.4
+# version 2.5
 #
 # Changelog :
-# Less dry code with more function.
-# More support currently focused on Debian (apt) based distro.
-# Improved functions like fuck, fishing, and updt, with it's distro-detect automation.
-# Better in-terminal message transparency, especially when using distro-detect automation.
+# Refactor: Using switch-case to detect package manager.
+# Add: First time unconfigured usage message prompting to do a first time configuration using the <fishing> command.
+# Add: <fishing> will create universal varibale of $package_manager.
+# Add: Ability to automatically detect a .deb file, make readable with chmod, then proceed with apt install.
+# Add: Ability to detect eos-update for EndeavourOS users.
 #
 
 # Fish reeting here.
