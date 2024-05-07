@@ -10,7 +10,7 @@ function fuck
     case apt
         set dotdebfile ./*.deb
         if test "$dotdebfile" = "$packages"
-            blue-echo "Installing a .deb file."
+            blue-echo "Installing a .deb file.\n"
             yellow-echo "Doing: sudo chmod a+r $packages\n"
             sudo chmod a+r $packages
             yellow-echo "Doing: sudo apt install $packages\n"
