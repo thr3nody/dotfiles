@@ -24,6 +24,13 @@ function fishing
         curl -sS https://starship.rs/install.sh | sh
 
         eval $delete_first_time_message
+    else if test -e /run/current-system/sw/bin/nix
+        yellow-echo "[nix] detected in the system.|n"
+        yellow-echo "Doing: set -U package_manager 'nix'\n"
+        set -U package_manager 'nix';
+
+        # blue-echo "Starting to download all the needed packages for current fish configuration.\n"
+        # Bro how???
     else
         red-echo "Current package manager is either not found or not yet supported for this command.\n"
         red-echo "Add your own command into the fish configuration or just talk to Erine.\n"
